@@ -1,0 +1,5 @@
+C:\Users\siglov\source\repos\FirstProject\FirstProject.Service\obj\Debug\net7.0\FirstProject.Service.csproj.AssemblyReference.cache
+C:\Users\siglov\source\repos\FirstProject\FirstProject.Service\obj\Debug\net7.0\FirstProject.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\siglov\source\repos\FirstProject\FirstProject.Service\obj\Debug\net7.0\FirstProject.Service.AssemblyInfoInputs.cache
+C:\Users\siglov\source\repos\FirstProject\FirstProject.Service\obj\Debug\net7.0\FirstProject.Service.AssemblyInfo.cs
+C:\Users\siglov\source\repos\FirstProject\FirstProject.Service\obj\Debug\net7.0\FirstProject.Service.csproj.CoreCompileInputs.cache
