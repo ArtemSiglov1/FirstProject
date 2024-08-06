@@ -195,6 +195,133 @@
         }
       }
     },
+    "C:\\Users\\siglov\\source\\repos\\FirstProject\\FirstProject.Interfaces\\FirstProject.Interfaces.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\siglov\\source\\repos\\FirstProject\\FirstProject.Interfaces\\FirstProject.Interfaces.csproj",
+        "projectName": "FirstProject.Interfaces",
+        "projectPath": "C:\\Users\\siglov\\source\\repos\\FirstProject\\FirstProject.Interfaces\\FirstProject.Interfaces.csproj",
+        "packagesPath": "C:\\Users\\siglov\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\siglov\\source\\repos\\FirstProject\\FirstProject.Interfaces\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\siglov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\siglov\\source\\repos\\FirstProject\\FirstProject.Data.Model\\FirstProject.Data.Models.csproj": {
+                "projectPath": "C:\\Users\\siglov\\source\\repos\\FirstProject\\FirstProject.Data.Model\\FirstProject.Data.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\siglov\\source\\repos\\FirstProject\\FirstProject.Service\\FirstProject.Service.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\siglov\\source\\repos\\FirstProject\\FirstProject.Service\\FirstProject.Service.csproj",
+        "projectName": "FirstProject.Service",
+        "projectPath": "C:\\Users\\siglov\\source\\repos\\FirstProject\\FirstProject.Service\\FirstProject.Service.csproj",
+        "packagesPath": "C:\\Users\\siglov\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\siglov\\source\\repos\\FirstProject\\FirstProject.Service\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\siglov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\siglov\\source\\repos\\FirstProject\\FirstProject.Data\\FirstProject.Data.csproj": {
+                "projectPath": "C:\\Users\\siglov\\source\\repos\\FirstProject\\FirstProject.Data\\FirstProject.Data.csproj"
+              },
+              "C:\\Users\\siglov\\source\\repos\\FirstProject\\FirstProject.Interfaces\\FirstProject.Interfaces.csproj": {
+                "projectPath": "C:\\Users\\siglov\\source\\repos\\FirstProject\\FirstProject.Interfaces\\FirstProject.Interfaces.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\siglov\\source\\repos\\FirstProject\\FirstProject\\FirstProject.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -221,6 +348,12 @@
             "projectReferences": {
               "C:\\Users\\siglov\\source\\repos\\FirstProject\\FirstProject.Data\\FirstProject.Data.csproj": {
                 "projectPath": "C:\\Users\\siglov\\source\\repos\\FirstProject\\FirstProject.Data\\FirstProject.Data.csproj"
+              },
+              "C:\\Users\\siglov\\source\\repos\\FirstProject\\FirstProject.Interfaces\\FirstProject.Interfaces.csproj": {
+                "projectPath": "C:\\Users\\siglov\\source\\repos\\FirstProject\\FirstProject.Interfaces\\FirstProject.Interfaces.csproj"
+              },
+              "C:\\Users\\siglov\\source\\repos\\FirstProject\\FirstProject.Service\\FirstProject.Service.csproj": {
+                "projectPath": "C:\\Users\\siglov\\source\\repos\\FirstProject\\FirstProject.Service\\FirstProject.Service.csproj"
               }
             }
           }

@@ -1064,6 +1064,19 @@
         "runtime": {
           "bin/placeholder/FirstProject.Data.Models.dll": {}
         }
+      },
+      "FirstProject.Interfaces/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "FirstProject.Data.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/FirstProject.Interfaces.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FirstProject.Interfaces.dll": {}
+        }
       }
     }
   },
@@ -3223,11 +3236,17 @@
       "type": "project",
       "path": "../FirstProject.Data.Model/FirstProject.Data.Models.csproj",
       "msbuildProject": "../FirstProject.Data.Model/FirstProject.Data.Models.csproj"
+    },
+    "FirstProject.Interfaces/1.0.0": {
+      "type": "project",
+      "path": "../FirstProject.Interfaces/FirstProject.Interfaces.csproj",
+      "msbuildProject": "../FirstProject.Interfaces/FirstProject.Interfaces.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
       "FirstProject.Data >= 1.0.0",
+      "FirstProject.Interfaces >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 7.0.0"
     ]
   },
@@ -3260,6 +3279,9 @@
           "projectReferences": {
             "C:\\Users\\siglov\\source\\repos\\FirstProject\\FirstProject.Data\\FirstProject.Data.csproj": {
               "projectPath": "C:\\Users\\siglov\\source\\repos\\FirstProject\\FirstProject.Data\\FirstProject.Data.csproj"
+            },
+            "C:\\Users\\siglov\\source\\repos\\FirstProject\\FirstProject.Interfaces\\FirstProject.Interfaces.csproj": {
+              "projectPath": "C:\\Users\\siglov\\source\\repos\\FirstProject\\FirstProject.Interfaces\\FirstProject.Interfaces.csproj"
             }
           }
         }

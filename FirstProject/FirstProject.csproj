@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -20,6 +20,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FirstProject.Data\FirstProject.Data.csproj" />
+    <ProjectReference Include="..\FirstProject.Interfaces\FirstProject.Interfaces.csproj" />
+    <ProjectReference Include="..\FirstProject.Service\FirstProject.Service.csproj" />
   </ItemGroup>
 
 </Project>

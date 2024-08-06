@@ -7,15 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\BussinesLogic\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\FirstProject.Data\FirstProject.Data.csproj" />
+    <ProjectReference Include="..\FirstProject.Interfaces\FirstProject.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>

@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FirstProject.Data", "FirstP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FirstProject.Data.Models", "FirstProject.Data.Model\FirstProject.Data.Models.csproj", "{33786E12-AD94-48E9-B509-6A3CF8FD9E6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstProject.Data.Enums", "FirstProject.Data.Enums\FirstProject.Data.Enums.csproj", "{6E1A288F-4E60-4002-82F9-821D48F96CAD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FirstProject.Data.Enums", "FirstProject.Data.Enums\FirstProject.Data.Enums.csproj", "{6E1A288F-4E60-4002-82F9-821D48F96CAD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstProject.Service", "FirstProject.Service\FirstProject.Service.csproj", "{ED9D0C58-A632-4E52-BB27-54B759FC16D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FirstProject.Service", "FirstProject.Service\FirstProject.Service.csproj", "{ED9D0C58-A632-4E52-BB27-54B759FC16D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstProject.Interfaces", "FirstProject.Interfaces\FirstProject.Interfaces.csproj", "{8E70BFAF-32BA-4CE4-9B22-C3E75466ADE3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{ED9D0C58-A632-4E52-BB27-54B759FC16D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED9D0C58-A632-4E52-BB27-54B759FC16D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED9D0C58-A632-4E52-BB27-54B759FC16D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E70BFAF-32BA-4CE4-9B22-C3E75466ADE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E70BFAF-32BA-4CE4-9B22-C3E75466ADE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E70BFAF-32BA-4CE4-9B22-C3E75466ADE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E70BFAF-32BA-4CE4-9B22-C3E75466ADE3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
