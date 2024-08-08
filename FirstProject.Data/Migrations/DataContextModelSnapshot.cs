@@ -53,9 +53,14 @@ namespace FirstProject.Data.Migrations
                     b.Property<DateTime>("DateCreate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("SellerId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("BuyerId");
+
+                    b.HasIndex("SellerId");
 
                     b.ToTable("Orders", (string)null);
                 });
@@ -213,7 +218,15 @@ namespace FirstProject.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("FirstProject.Data.Models.Seller", "Seller")
+                        .WithMany("Orders")
+                        .HasForeignKey("SellerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Buyer");
+
+                    b.Navigation("Seller");
                 });
 
             modelBuilder.Entity("FirstProject.Data.Models.OrderItem", b =>
@@ -294,6 +307,11 @@ namespace FirstProject.Data.Migrations
                     b.Navigation("Items");
 
                     b.Navigation("Transactions");
+                });
+
+            modelBuilder.Entity("FirstProject.Data.Models.Seller", b =>
+                {
+                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("FirstProject.Data.Models.Shop", b =>

@@ -11,8 +11,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FirstProject.Data.Enums\FirstProject.Data.Enums.csproj" />
     <ProjectReference Include="..\FirstProject.Data\FirstProject.Data.csproj" />
     <ProjectReference Include="..\FirstProject.Interfaces\FirstProject.Interfaces.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="FirstProject.Data.Models">
+      <HintPath>..\FirstProject.Data.Model\obj\Debug\net7.0\ref\FirstProject.Data.Models.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

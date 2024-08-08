@@ -12,9 +12,10 @@ namespace FirstProject.Models.BussinesLogic
     public class Client
     {
         public int BuyerId { get; set; }
-        public Client(IClientService clientService)
+        public Client(IClientService clientService, IDataModulService dataModul)
         {
             ClientService = clientService;
+            DataModulService= dataModul;
         }
 
         public IClientService ClientService { get; set; }
@@ -50,20 +51,22 @@ namespace FirstProject.Models.BussinesLogic
             return orderItems;
         }
 
-        private async void OnTimedEvent(Object source, ElapsedEventArgs e)
+        private async void OnTimedEvent(object source, ElapsedEventArgs e)
         {
             var buyer = DataModulService.GetRandomBuyer();
             var seller = DataModulService.GetRandomSeller();
             var orderDetails = await GenerateRandomOrder();
             var order =await ClientService.CreateOrders(buyer.Id, seller.Id, orderDetails);
-
+            Console.WriteLine("/DDD/");
             if (order != null)
             {
+                Console.WriteLine("/DDD");
                 OnBuy?.Invoke(this, order);
+                
             }
             else
             {
-                await Console.Out.WriteLineAsync();
+                await Console.Out.WriteLineAsync("Try Again");
             }
         }
 

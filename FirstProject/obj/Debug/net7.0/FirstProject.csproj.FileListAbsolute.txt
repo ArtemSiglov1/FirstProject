@@ -76,3 +76,7 @@ C:\Users\siglov\source\repos\FirstProject\FirstProject\obj\Debug\net7.0\FirstPro
 C:\Users\siglov\source\repos\FirstProject\FirstProject\obj\Debug\net7.0\ref\FirstProject.dll
 C:\Users\siglov\source\repos\FirstProject\FirstProject\bin\Debug\net7.0\FirstProject.Data.Enums.dll
 C:\Users\siglov\source\repos\FirstProject\FirstProject\bin\Debug\net7.0\FirstProject.Data.Enums.pdb
+C:\Users\siglov\source\repos\FirstProject\FirstProject\bin\Debug\net7.0\FirstProject.Interfaces.dll
+C:\Users\siglov\source\repos\FirstProject\FirstProject\bin\Debug\net7.0\FirstProject.Service.dll
+C:\Users\siglov\source\repos\FirstProject\FirstProject\bin\Debug\net7.0\FirstProject.Interfaces.pdb
+C:\Users\siglov\source\repos\FirstProject\FirstProject\bin\Debug\net7.0\FirstProject.Service.pdb

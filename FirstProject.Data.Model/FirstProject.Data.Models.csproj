@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="BussinesLogic\**" />
+    <EmbeddedResource Remove="BussinesLogic\**" />
+    <None Remove="BussinesLogic\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\FirstProject.Data.Enums\FirstProject.Data.Enums.csproj" />
   </ItemGroup>
 

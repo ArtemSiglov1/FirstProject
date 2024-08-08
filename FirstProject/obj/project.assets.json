@@ -1208,6 +1208,7 @@
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "FirstProject.Data": "1.0.0",
+          "FirstProject.Data.Enums": "1.0.0",
           "FirstProject.Interfaces": "1.0.0",
           "Microsoft.EntityFrameworkCore": "7.0.0"
         },

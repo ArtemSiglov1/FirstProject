@@ -14,5 +14,7 @@ namespace FirstProject.Interfaces
         public Task<Buyer> GetRandomBuyer();
         public Task<Seller> GetRandomSeller();
         public Task<Product> GetRandomProduct();
+        // public Task<Magazin> AddShop();
+        public Task InitData(ISellerService seller, IClientService client, IStorageService storage);
     }
 }

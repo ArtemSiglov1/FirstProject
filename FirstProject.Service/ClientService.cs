@@ -16,6 +16,10 @@ namespace FirstProject.Service
     {
         private DbContextOptions<DataContext> _dbContextOptions;
 
+        public ClientService()
+        {
+        }
+
         public ClientService(DbContextOptions<DataContext> dbContextOptions)
         {
             _dbContextOptions = dbContextOptions;

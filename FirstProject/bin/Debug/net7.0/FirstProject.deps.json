@@ -9,6 +9,8 @@
       "FirstProject/1.0.0": {
         "dependencies": {
           "FirstProject.Data": "1.0.0",
+          "FirstProject.Interfaces": "1.0.0",
+          "FirstProject.Service": "1.0.0",
           "Microsoft.EntityFrameworkCore": "7.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.0",
           "Microsoft.EntityFrameworkCore.Tools": "7.0.0",
@@ -727,6 +729,25 @@
         "runtime": {
           "FirstProject.Data.Models.dll": {}
         }
+      },
+      "FirstProject.Interfaces/1.0.0": {
+        "dependencies": {
+          "FirstProject.Data.Models": "1.0.0"
+        },
+        "runtime": {
+          "FirstProject.Interfaces.dll": {}
+        }
+      },
+      "FirstProject.Service/1.0.0": {
+        "dependencies": {
+          "FirstProject.Data": "1.0.0",
+          "FirstProject.Data.Enums": "1.0.0",
+          "FirstProject.Interfaces": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "7.0.0"
+        },
+        "runtime": {
+          "FirstProject.Service.dll": {}
+        }
       }
     }
   },
@@ -1223,6 +1244,16 @@
       "sha512": ""
     },
     "FirstProject.Data.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FirstProject.Interfaces/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FirstProject.Service/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

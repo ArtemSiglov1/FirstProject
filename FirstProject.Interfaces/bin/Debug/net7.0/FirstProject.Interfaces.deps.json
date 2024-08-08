@@ -1,0 +1,49 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "FirstProject.Interfaces/1.0.0": {
+        "dependencies": {
+          "FirstProject.Data.Models": "1.0.0"
+        },
+        "runtime": {
+          "FirstProject.Interfaces.dll": {}
+        }
+      },
+      "FirstProject.Data.Enums/1.0.0": {
+        "runtime": {
+          "FirstProject.Data.Enums.dll": {}
+        }
+      },
+      "FirstProject.Data.Models/1.0.0": {
+        "dependencies": {
+          "FirstProject.Data.Enums": "1.0.0"
+        },
+        "runtime": {
+          "FirstProject.Data.Models.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FirstProject.Interfaces/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FirstProject.Data.Enums/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FirstProject.Data.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

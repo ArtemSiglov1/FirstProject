@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace FirstProject.Models.BussinesLogic
 {
-    public class Shop
+    public class Magazin
     {
         public int Id { get; set; }
         public List<BusinessSeller> Sellers { get; set; }
-        public Shop(IDataModulService dataService, int shopId,ISellerService sellerService)
+        public Magazin(IDataModulService dataService, int shopId,ISellerService sellerService)
         {
             Id = shopId;
         }

@@ -1,5 +1,6 @@
 ﻿using FirstProject.Data;
 using FirstProject.Data.Models;
+using FirstProject.Interfaces;
 using FirstProject.Service.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -14,6 +15,10 @@ namespace FirstProject.Models.BussinesLogic
     {
 
         private DbContextOptions<DataContext> _dbContextOptions;
+
+        public Provider()
+        {
+        }
 
         public Provider(DbContextOptions<DataContext> dbContextOptions)
         {
