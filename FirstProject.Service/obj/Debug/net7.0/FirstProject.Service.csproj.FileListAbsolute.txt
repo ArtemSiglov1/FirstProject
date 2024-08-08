@@ -13,8 +13,9 @@ C:\Users\siglov\source\repos\FirstProject\FirstProject.Service\obj\Debug\net7.0\
 C:\Users\siglov\source\repos\FirstProject\FirstProject.Service\obj\Debug\net7.0\FirstProject.Service.AssemblyInfoInputs.cache
 C:\Users\siglov\source\repos\FirstProject\FirstProject.Service\obj\Debug\net7.0\FirstProject.Service.AssemblyInfo.cs
 C:\Users\siglov\source\repos\FirstProject\FirstProject.Service\obj\Debug\net7.0\FirstProject.Service.csproj.CoreCompileInputs.cache
-C:\Users\siglov\source\repos\FirstProject\FirstProject.Service\obj\Debug\net7.0\FirstProject.Service.csproj.CopyComplete
 C:\Users\siglov\source\repos\FirstProject\FirstProject.Service\obj\Debug\net7.0\FirstProject.Service.dll
 C:\Users\siglov\source\repos\FirstProject\FirstProject.Service\obj\Debug\net7.0\refint\FirstProject.Service.dll
 C:\Users\siglov\source\repos\FirstProject\FirstProject.Service\obj\Debug\net7.0\FirstProject.Service.pdb
 C:\Users\siglov\source\repos\FirstProject\FirstProject.Service\obj\Debug\net7.0\ref\FirstProject.Service.dll
+C:\Users\siglov\source\repos\FirstProject\FirstProject.Service\obj\Debug\net7.0\FirstProject.Service.sourcelink.json
+C:\Users\siglov\source\repos\FirstProject\FirstProject.Service\obj\Debug\net7.0\FirstPro.702A3D49.Up2Date

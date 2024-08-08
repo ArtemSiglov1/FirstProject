@@ -10,16 +10,29 @@ using FirstProject.Interfaces;
 
 namespace FirstProject.Service
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class StorageService : IStorageService
     {
+        /// <summary>
+        /// 
+        /// </summary>
         private DbContextOptions<DataContext> _dbContextOptions;
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dbContextOptions"></param>
         public StorageService(DbContextOptions<DataContext> dbContextOptions)
         {
             _dbContextOptions = dbContextOptions;
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="shop"></param>
+        /// <returns></returns>
 
         public async Task CreateShop(Shop shop)
         {
@@ -33,12 +46,22 @@ namespace FirstProject.Service
 
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<Shop>> GetShops()
         {
             await using var db = new DataContext(_dbContextOptions);
             var shops = await db.Shops.ToListAsync();
             return shops;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="shopId"></param>
+        /// <param name="seller"></param>
+        /// <returns></returns>
         public async Task AddSeller(int shopId, Seller seller)
         {
             if (seller == null)
@@ -57,12 +80,22 @@ namespace FirstProject.Service
             return;
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="shopId"></param>
+        /// <returns></returns>
         public async Task<List<Seller>> GetSellers(int shopId)
         {
             await using var db = new DataContext(_dbContextOptions);
             var sellers = await db.Sellers.Where(x => x.ShopId == shopId).ToListAsync();
             return sellers;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
         public async Task CreateProduct(Product product)
         {
             await using var db = new DataContext(_dbContextOptions);
@@ -77,6 +110,10 @@ namespace FirstProject.Service
             return;
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<Product>> GetProduct()
         {
             await using var db = new DataContext(_dbContextOptions);
@@ -89,6 +126,7 @@ namespace FirstProject.Service
         public async Task DeliverGoods(int shopId, int productId, double count)
         {
             await using var db = new DataContext(_dbContextOptions);
+           
             var shop = await db.Shops.FirstOrDefaultAsync(x => x.Id == shopId);
             if (shop == null)
                 return; 
@@ -106,22 +144,38 @@ namespace FirstProject.Service
 
         public async Task GetProduct(List<OrderItem> orders, int shopId)
         {
-            if (orders.IsNullOrEmpty())
-                return;
-            if (shopId == 0)
-                return;
-            await using var db = new DataContext(_dbContextOptions);
-            var shop = await db.Shops.FirstOrDefaultAsync(db => db.Id == shopId);
-            if (shop == null)
-            {
-                // var respose =new BaseResponse() { IsSuccess = true,ErrorMessage="Магазина с данным айди не сущестует" }) ;
-                return;
-            }
+            await using var db=new DataContext(_dbContextOptions);
+            await using var transact =await db.Database.BeginTransactionAsync();
+            var list = new List<StorageTransaction>();
             foreach (var item in orders)
             {
-                await db.StorageTransactions.AddAsync(new StorageTransaction { ShopId = shopId, ProductId = item.ProductId, Count = item.Count, TransactionType = StorageTransactionType.Ship });
+                list.Add(new StorageTransaction
+                {
+                    DateCreate = DateTime.UtcNow,
+                    ShopId = shopId,
+                    Count = Math.Truncate(item.Count * 1.5),
+                    ProductId = item.ProductId,
+                    TransactionType = StorageTransactionType.Take,
+                });
             }
+            try
+            {
+                await db.BulkInsertAsync(list);
+                await db.SaveChangesAsync();
+                await transact.CommitAsync();
+            }
+            catch (Exception ex)
+            {
+                await transact.RollbackAsync();
+            }
+        }
+
+        public async Task AddBuyer(List<Buyer> buyers)
+        {
+            await using var db = new DataContext(_dbContextOptions);
+            await db.BulkInsertAsync(buyers);
             await db.SaveChangesAsync();
+
         }
     }
 }

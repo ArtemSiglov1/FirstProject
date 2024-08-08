@@ -17,7 +17,7 @@ namespace FirstProject.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.0")
+                .HasAnnotation("ProductVersion", "8.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -113,8 +113,7 @@ namespace FirstProject.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OrderId")
-                        .IsUnique();
+                    b.HasIndex("OrderId");
 
                     b.ToTable("OrderTransactions", (string)null);
                 });
@@ -207,6 +206,8 @@ namespace FirstProject.Data.Migrations
 
                     b.HasIndex("ShopId");
 
+                    b.HasIndex("Id", "ShopId");
+
                     b.ToTable("StorageTransactions", (string)null);
                 });
 
@@ -251,8 +252,8 @@ namespace FirstProject.Data.Migrations
             modelBuilder.Entity("FirstProject.Data.Models.OrderTransaction", b =>
                 {
                     b.HasOne("FirstProject.Data.Models.Order", "Order")
-                        .WithOne("OrderTransaction")
-                        .HasForeignKey("FirstProject.Data.Models.OrderTransaction", "OrderId")
+                        .WithMany("OrderTransaction")
+                        .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -298,8 +299,7 @@ namespace FirstProject.Data.Migrations
                 {
                     b.Navigation("Items");
 
-                    b.Navigation("OrderTransaction")
-                        .IsRequired();
+                    b.Navigation("OrderTransaction");
                 });
 
             modelBuilder.Entity("FirstProject.Data.Models.Product", b =>

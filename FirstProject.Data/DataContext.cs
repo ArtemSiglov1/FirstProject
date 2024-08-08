@@ -1,5 +1,6 @@
 ﻿using FirstProject.Data.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace FirstProject.Data
 {
@@ -18,7 +19,9 @@ namespace FirstProject.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=PS-3052023\\TESTMSSQL;Database=FirstProject;User Id=test;Password=test;TrustServerCertificate=True");
+            optionsBuilder.UseLoggerFactory(MyLoggerFactory)
+                .EnableSensitiveDataLogging()
+                .UseSqlServer("Server=PS-3052023\\TESTMSSQL;Database=FirstProject;User Id=test;Password=test;TrustServerCertificate=True");
             //optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=Users;Username=postgres;Password=111111");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -67,8 +70,8 @@ namespace FirstProject.Data
             modelBuilder.Entity<OrderTransaction>().HasKey(x => x.Id);
             modelBuilder.Entity<OrderTransaction>()
     .HasOne(order => order.Order)
-       .WithOne(buyer => buyer.OrderTransaction)
-       .HasForeignKey<OrderTransaction>(order => order.OrderId);
+       .WithMany(buyer => buyer.OrderTransaction)
+       .HasForeignKey(order => order.OrderId);
 
             modelBuilder.Entity<Product>().ToTable("Products");
             modelBuilder.Entity<Product>().HasKey(x => x.Id);
@@ -84,9 +87,14 @@ namespace FirstProject.Data
             .HasOne(transaction => transaction.Products)
             .WithMany(shop => shop.Transactions)
             .HasForeignKey(seller => seller.ProductId);
-
+            modelBuilder.Entity<StorageTransaction>().HasIndex(x => new {x.Id,x.ShopId});
             base.OnModelCreating(modelBuilder);
         }
-
+        public static readonly ILoggerFactory MyLoggerFactory = LoggerFactory.Create(builder =>
+        {
+            Console.WriteLine( builder
+            .AddFilter((category, level) => category == DbLoggerCategory.Database.Name
+            && level == LogLevel.Information));
+        });
     }
 }

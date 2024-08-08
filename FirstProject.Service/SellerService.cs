@@ -15,19 +15,31 @@ using System.Threading.Tasks;
 
 namespace FirstProject.Service
 {
-    public class SellerService:ISellerService
+    /// <summary>
+    /// 
+    /// </summary>
+    public class SellerService : ISellerService
     {
+        /// <summary>
+        /// 
+        /// </summary>
         private DbContextOptions<DataContext> _dbContextOptions;
 
-        public SellerService()
-        {
-        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dbContextOptions"></param>
 
         public SellerService(DbContextOptions<DataContext> dbContextOptions)
         {
             _dbContextOptions = dbContextOptions;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="order"></param>
+        /// <param name="shopId"></param>
+        /// <returns></returns>
         public async Task<List<OrderItem>> CheckProduct(Order order, int shopId)
         {
             await using var db = new DataContext(_dbContextOptions);
@@ -44,109 +56,139 @@ namespace FirstProject.Service
                      Count = g.Sum(x => x.TransactionType == StorageTransactionType.Take ? x.Count : -x.Count)
                  })
                  .ToArrayAsync();
-            //todo: по каждому продукту проверить доступное кол во на складе 
-            foreach (var item in order.Items)
+            
+
+                var availableProduct = productCount.Where(p => order.Items.Any(x=>x.ProductId==p.ProductId)).FirstOrDefault();
+            if (availableProduct != null)
             {
-                var availableProduct = productCount.FirstOrDefault(p => p.ProductId == item.ProductId);
-                if (availableProduct == null || availableProduct.Count < item.Count)
+
+
+                if (order.Items.Any(x => x.Count > availableProduct.Count))
                 {
-                   return new List<OrderItem> { new OrderItem { ProductId = item.ProductId } }                     ;
+                    return new List<OrderItem> { new OrderItem { ProductId = availableProduct.ProductId } };
                 }
             }
             return new List<OrderItem> { };
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="order"></param>
+        /// <param name="shopId"></param>
+        /// <param name="sellerId"></param>
+        /// <returns></returns>
         public async Task<bool> ProcessOrder(Order order, int shopId, int sellerId)
         {
 
             await using var db = new DataContext(_dbContextOptions);
-           var product=await  CheckProduct(order, shopId);
+            await using var transact=await db.Database.BeginTransactionAsync();
+            var product = await CheckProduct(order, shopId);
+            var productIds = order.Items.Select(x => x.ProductId).ToArray();
+            var products = await db.Products.Where(x => productIds.Contains(x.Id)).ToListAsync();
             if (!product.IsNullOrEmpty())
             {
                 return false;
             }
-            // Если все товары доступны, списываем их со склада и фиксируем продажу
-            foreach (var item in order.Items)
+            List<StorageTransaction> storages= new List<StorageTransaction>();
+            List<OrderTransaction> orders = new List<OrderTransaction>();
+            try
             {
-                await db.StorageTransactions.AddAsync(new StorageTransaction
+                foreach (var item in order.Items)
                 {
-                    ShopId = shopId,
-                    ProductId = item.ProductId,
-                    Count = item.Count, // Списание товара
-                    TransactionType = StorageTransactionType.Ship,
-                    DateCreate = DateTime.UtcNow
-                });
-
-                await db.OrderTransactions.AddAsync(new OrderTransaction
-                {
-                    Cost = (decimal)(item.Count * item.Product.Price),
-                    DateCreate = DateTime.UtcNow,
-                    OrderId = item.OrderId,
-                });
+                    storages.Add(new StorageTransaction
+                    {
+                        ShopId = shopId,
+                        ProductId = item.ProductId,
+                        Count = item.Count, // Списание товара
+                        TransactionType = StorageTransactionType.Ship,
+                        DateCreate = DateTime.UtcNow
+                    });
+                    foreach (var elem in products)
+                    {
+                        orders.Add(new OrderTransaction
+                        {
+                            Cost = (decimal)(item.Count * elem.Price),
+                            DateCreate = DateTime.UtcNow,
+                            OrderId = item.OrderId,
+                        });
+                    }
+                }
+                await db.StorageTransactions.BulkInsertAsync(storages);
+                await db.OrderTransactions.BulkInsertAsync(orders);
+                await db.SaveChangesAsync();
+                await transact.CommitAsync();
+                return true;
+            }catch(Exception exeption)
+            {
+                await transact.RollbackAsync();
+                return false;
             }
-            return true;
+          
         }
-
-        //public async Task<BaseResponse> Sale(Order order)
-        //{
-        //    if (order == null) 
-        //       return new BaseResponse() { IsSuccess = true ,ErrorMessage="Вы не указали заказ"};
-        //    await using var db = new DataContext(_dbContextOptions);
-        //    var seller = await db.Sellers.FirstOrDefaultAsync(x => x.Id == order.SellerId);
-        //    if (seller == null)
-        //        return new BaseResponse { IsSuccess = true, ErrorMessage = "Продавец с данным айди не существует" };
-        //    var shop = await db.Shops.FirstOrDefaultAsync(x => x.Id == seller.ShopId);
-        //    if (shop == null)
-        //        return new BaseResponse() { IsSuccess = true, ErrorMessage = "Магазина с данным айди не существует " };
-        //    var productIds = order.Items.Select(x => x.ProductId).ToArray();
-        //    var productCount = await db.StorageTransactions
-        //         .Where(x => x.ShopId == shop.Id && productIds.Contains(x.ProductId))
-        //         .GroupBy(x => x.ProductId)
-        //         .Select(g => new
-        //         {
-        //             ProductId = g.Key,
-        //             Count = g.Sum(x => x.TransactionType == StorageTransactionType.Take ? x.Count : -x.Count)
-        //         })
-        //         .ToArrayAsync();
-        //    //todo: по каждому продукту проверить доступное кол во на складе 
-        //    foreach (var item in order.Items)
-        //    {
-        //        var availableProduct = productCount.FirstOrDefault(p => p.ProductId == item.ProductId);
-        //        if (availableProduct == null || availableProduct.Count < item.Count)
-        //        {
-        //            return new BaseResponse
-        //            {
-        //                IsSuccess = false,
-        //                ErrorMessage = $"Недостаточно товара с ID {item.ProductId} на складе"
-        //            };
-        //        }
-        //    }
-
-        //    // Если все товары доступны, списываем их со склада и фиксируем продажу
-        //    foreach (var item in order.Items)
-        //    {
-        //      await  db.StorageTransactions.AddAsync(new StorageTransaction
-        //        {
-        //            ShopId = shop.Id,
-        //            ProductId = item.ProductId,
-        //            Count = item.Count, // Списание товара
-        //            TransactionType = StorageTransactionType.Ship,
-        //            DateCreate = DateTime.UtcNow
-        //        });
-
-        //     await   db.OrderTransactions.AddAsync(new OrderTransaction
-        //        {
-        //            Cost = (decimal)(item.Count*item.Product.Price),
-        //            DateCreate = DateTime.UtcNow,
-        //            OrderId=item.OrderId,
-        //        });
-        //    }
-
-        //    await db.SaveChangesAsync();
-
-        //    return new BaseResponse { IsSuccess = true, ErrorMessage = "Продажа успешно завершена" };
-       
-        //}
-        
     }
 }
+
+//public async Task<BaseResponse> Sale(Order order)
+//{
+//    if (order == null) 
+//       return new BaseResponse() { IsSuccess = true ,ErrorMessage="Вы не указали заказ"};
+//    await using var db = new DataContext(_dbContextOptions);
+//    var seller = await db.Sellers.FirstOrDefaultAsync(x => x.Id == order.SellerId);
+//    if (seller == null)
+//        return new BaseResponse { IsSuccess = true, ErrorMessage = "Продавец с данным айди не существует" };
+//    var shop = await db.Shops.FirstOrDefaultAsync(x => x.Id == seller.ShopId);
+//    if (shop == null)
+//        return new BaseResponse() { IsSuccess = true, ErrorMessage = "Магазина с данным айди не существует " };
+//    var productIds = order.Items.Select(x => x.ProductId).ToArray();
+//    var productCount = await db.StorageTransactions
+//         .Where(x => x.ShopId == shop.Id && productIds.Contains(x.ProductId))
+//         .GroupBy(x => x.ProductId)
+//         .Select(g => new
+//         {
+//             ProductId = g.Key,
+//             Count = g.Sum(x => x.TransactionType == StorageTransactionType.Take ? x.Count : -x.Count)
+//         })
+//         .ToArrayAsync();
+//    //todo: по каждому продукту проверить доступное кол во на складе 
+//    foreach (var item in order.Items)
+//    {
+//        var availableProduct = productCount.FirstOrDefault(p => p.ProductId == item.ProductId);
+//        if (availableProduct == null || availableProduct.Count < item.Count)
+//        {
+//            return new BaseResponse
+//            {
+//                IsSuccess = false,
+//                ErrorMessage = $"Недостаточно товара с ID {item.ProductId} на складе"
+//            };
+//        }
+//    }
+
+//    // Если все товары доступны, списываем их со склада и фиксируем продажу
+//    foreach (var item in order.Items)
+//    {
+//      await  db.StorageTransactions.AddAsync(new StorageTransaction
+//        {
+//            ShopId = shop.Id,
+//            ProductId = item.ProductId,
+//            Count = item.Count, // Списание товара
+//            TransactionType = StorageTransactionType.Ship,
+//            DateCreate = DateTime.UtcNow
+//        });
+
+//     await   db.OrderTransactions.AddAsync(new OrderTransaction
+//        {
+//            Cost = (decimal)(item.Count*item.Product.Price),
+//            DateCreate = DateTime.UtcNow,
+//            OrderId=item.OrderId,
+//        });
+//    }
+
+//    await db.SaveChangesAsync();
+
+//    return new BaseResponse { IsSuccess = true, ErrorMessage = "Продажа успешно завершена" };
+
+//}
+
+
+

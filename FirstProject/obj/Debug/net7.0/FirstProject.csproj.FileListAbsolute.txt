@@ -68,7 +68,6 @@ C:\Users\siglov\source\repos\FirstProject\FirstProject\bin\Debug\net7.0\FirstPro
 C:\Users\siglov\source\repos\FirstProject\FirstProject\bin\Debug\net7.0\FirstProject.Data.Models.dll
 C:\Users\siglov\source\repos\FirstProject\FirstProject\bin\Debug\net7.0\FirstProject.Data.pdb
 C:\Users\siglov\source\repos\FirstProject\FirstProject\bin\Debug\net7.0\FirstProject.Data.Models.pdb
-C:\Users\siglov\source\repos\FirstProject\FirstProject\obj\Debug\net7.0\FirstProject.csproj.CopyComplete
 C:\Users\siglov\source\repos\FirstProject\FirstProject\obj\Debug\net7.0\FirstProject.dll
 C:\Users\siglov\source\repos\FirstProject\FirstProject\obj\Debug\net7.0\refint\FirstProject.dll
 C:\Users\siglov\source\repos\FirstProject\FirstProject\obj\Debug\net7.0\FirstProject.pdb
@@ -80,3 +79,5 @@ C:\Users\siglov\source\repos\FirstProject\FirstProject\bin\Debug\net7.0\FirstPro
 C:\Users\siglov\source\repos\FirstProject\FirstProject\bin\Debug\net7.0\FirstProject.Service.dll
 C:\Users\siglov\source\repos\FirstProject\FirstProject\bin\Debug\net7.0\FirstProject.Interfaces.pdb
 C:\Users\siglov\source\repos\FirstProject\FirstProject\bin\Debug\net7.0\FirstProject.Service.pdb
+C:\Users\siglov\source\repos\FirstProject\FirstProject\obj\Debug\net7.0\FirstProject.sourcelink.json
+C:\Users\siglov\source\repos\FirstProject\FirstProject\obj\Debug\net7.0\FirstPro.5031491B.Up2Date

@@ -12,4 +12,5 @@ C:\Users\siglov\source\repos\FirstProject\FirstProject.Data.Model\obj\Debug\net7
 C:\Users\siglov\source\repos\FirstProject\FirstProject.Data.Model\obj\Debug\net7.0\ref\FirstProject.Data.Models.dll
 C:\Users\siglov\source\repos\FirstProject\FirstProject.Data.Model\bin\Debug\net7.0\FirstProject.Data.Enums.dll
 C:\Users\siglov\source\repos\FirstProject\FirstProject.Data.Model\bin\Debug\net7.0\FirstProject.Data.Enums.pdb
-C:\Users\siglov\source\repos\FirstProject\FirstProject.Data.Model\obj\Debug\net7.0\FirstProject.Data.Models.csproj.CopyComplete
+C:\Users\siglov\source\repos\FirstProject\FirstProject.Data.Model\obj\Debug\net7.0\FirstProject.Data.Models.sourcelink.json
+C:\Users\siglov\source\repos\FirstProject\FirstProject.Data.Model\obj\Debug\net7.0\FirstPro.D57E76C5.Up2Date

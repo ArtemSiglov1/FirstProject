@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33627.172
@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FirstProject.Data.Enums", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FirstProject.Service", "FirstProject.Service\FirstProject.Service.csproj", "{ED9D0C58-A632-4E52-BB27-54B759FC16D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstProject.Interfaces", "FirstProject.Interfaces\FirstProject.Interfaces.csproj", "{8E70BFAF-32BA-4CE4-9B22-C3E75466ADE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FirstProject.Interfaces", "FirstProject.Interfaces\FirstProject.Interfaces.csproj", "{8E70BFAF-32BA-4CE4-9B22-C3E75466ADE3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

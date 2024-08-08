@@ -9,7 +9,6 @@ C:\Users\siglov\source\repos\FirstProject\FirstProject.Data\obj\Debug\net7.0\Fir
 C:\Users\siglov\source\repos\FirstProject\FirstProject.Data\obj\Debug\net7.0\FirstProject.Data.AssemblyInfoInputs.cache
 C:\Users\siglov\source\repos\FirstProject\FirstProject.Data\obj\Debug\net7.0\FirstProject.Data.AssemblyInfo.cs
 C:\Users\siglov\source\repos\FirstProject\FirstProject.Data\obj\Debug\net7.0\FirstProject.Data.csproj.CoreCompileInputs.cache
-C:\Users\siglov\source\repos\FirstProject\FirstProject.Data\obj\Debug\net7.0\FirstProject.Data.csproj.CopyComplete
 C:\Users\siglov\source\repos\FirstProject\FirstProject.Data\obj\Debug\net7.0\FirstProject.Data.dll
 C:\Users\siglov\source\repos\FirstProject\FirstProject.Data\obj\Debug\net7.0\refint\FirstProject.Data.dll
 C:\Users\siglov\source\repos\FirstProject\FirstProject.Data\obj\Debug\net7.0\FirstProject.Data.pdb
@@ -17,3 +16,5 @@ C:\Users\siglov\source\repos\FirstProject\FirstProject.Data\obj\Debug\net7.0\Fir
 C:\Users\siglov\source\repos\FirstProject\FirstProject.Data\obj\Debug\net7.0\ref\FirstProject.Data.dll
 C:\Users\siglov\source\repos\FirstProject\FirstProject.Data\bin\Debug\net7.0\FirstProject.Data.Enums.dll
 C:\Users\siglov\source\repos\FirstProject\FirstProject.Data\bin\Debug\net7.0\FirstProject.Data.Enums.pdb
+C:\Users\siglov\source\repos\FirstProject\FirstProject.Data\obj\Debug\net7.0\FirstProject.Data.sourcelink.json
+C:\Users\siglov\source\repos\FirstProject\FirstProject.Data\obj\Debug\net7.0\FirstPro.0B7AA028.Up2Date

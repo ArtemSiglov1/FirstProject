@@ -9,27 +9,44 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FirstProject.Models.BussinesLogic
+namespace FirstProject.BussinesLogic
 {
+    /// <summary>
+    /// провайдер
+    /// </summary>
     public class Provider
     {
-
+        /// <summary>
+        /// настройки для работы с бд
+        /// </summary>
         private DbContextOptions<DataContext> _dbContextOptions;
-
-        public Provider()
-        {
-        }
+        /// <summary>
+        /// конструктор 
+        /// </summary>
+        /// <param name="dbContextOptions">настройки для работы с бд</param>
 
         public Provider(DbContextOptions<DataContext> dbContextOptions)
         {
             _dbContextOptions = dbContextOptions;
         }
+        /// <summary>
+        /// конструктор
+        /// </summary>
+        /// <param name="service">интерфейс сервиса склада</param>
         public Provider(IStorageService service)
         {
             Service = service;
         }
-
+        /// <summary>
+        /// интерфейс сервиса склада
+        /// </summary>
         public IStorageService Service { get; set; }
+        /// <summary>
+        /// метод для получения продуктов в определенном магазине
+        /// </summary>
+        /// <param name="orders">список покупок</param>
+        /// <param name="shopId">идентиф магаза</param>
+        /// <returns></returns>
         public async Task<BaseResponse> GetProduct(List<OrderItem> orders,int shopId)
         {
             if (orders == null)

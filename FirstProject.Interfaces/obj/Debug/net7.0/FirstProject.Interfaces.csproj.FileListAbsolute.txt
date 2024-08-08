@@ -10,8 +10,9 @@ C:\Users\siglov\source\repos\FirstProject\FirstProject.Interfaces\obj\Debug\net7
 C:\Users\siglov\source\repos\FirstProject\FirstProject.Interfaces\obj\Debug\net7.0\FirstProject.Interfaces.AssemblyInfoInputs.cache
 C:\Users\siglov\source\repos\FirstProject\FirstProject.Interfaces\obj\Debug\net7.0\FirstProject.Interfaces.AssemblyInfo.cs
 C:\Users\siglov\source\repos\FirstProject\FirstProject.Interfaces\obj\Debug\net7.0\FirstProject.Interfaces.csproj.CoreCompileInputs.cache
-C:\Users\siglov\source\repos\FirstProject\FirstProject.Interfaces\obj\Debug\net7.0\FirstProject.Interfaces.csproj.CopyComplete
 C:\Users\siglov\source\repos\FirstProject\FirstProject.Interfaces\obj\Debug\net7.0\FirstProject.Interfaces.dll
 C:\Users\siglov\source\repos\FirstProject\FirstProject.Interfaces\obj\Debug\net7.0\refint\FirstProject.Interfaces.dll
 C:\Users\siglov\source\repos\FirstProject\FirstProject.Interfaces\obj\Debug\net7.0\FirstProject.Interfaces.pdb
 C:\Users\siglov\source\repos\FirstProject\FirstProject.Interfaces\obj\Debug\net7.0\ref\FirstProject.Interfaces.dll
+C:\Users\siglov\source\repos\FirstProject\FirstProject.Interfaces\obj\Debug\net7.0\FirstProject.Interfaces.sourcelink.json
+C:\Users\siglov\source\repos\FirstProject\FirstProject.Interfaces\obj\Debug\net7.0\FirstPro.8EE0A4F0.Up2Date
