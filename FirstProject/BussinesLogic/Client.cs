@@ -9,18 +9,41 @@ using System.Timers;
 
 namespace FirstProject.Models.BussinesLogic
 {
+    /// <summary>
+    /// бизнес модель клиент
+    /// </summary>
     public class Client
     {
+        /// <summary>
+        /// идентиф покупателя
+        /// </summary>
         public int BuyerId { get; set; }
+        /// <summary>
+        /// конструктор 
+        /// </summary>
+        /// <param name="clientService">сервис клиента</param>
+        /// <param name="dataModul">модель бд и работы с ней</param>
         public Client(IClientService clientService, IDataModulService dataModul)
         {
             ClientService = clientService;
             DataModulService= dataModul;
         }
-
+        /// <summary>
+        /// интерфейс сервиса клиента
+        /// </summary>
         public IClientService ClientService { get; set; }
+        /// <summary>
+        /// интерфейс сервиса бд
+        /// </summary>
         public IDataModulService DataModulService { get; set; }
+        /// <summary>
+        /// таймер для событий
+        /// </summary>
         private System.Timers.Timer _timer;
+        /// <summary>
+        /// метод для запуска таймера
+        /// </summary>
+        /// <param name="intervalInMilliseconds">интервал таймер ждет</param>
 
         public void StartTimer(double intervalInMilliseconds)
         {
@@ -35,6 +58,10 @@ namespace FirstProject.Models.BussinesLogic
 
 
         }
+        /// <summary>
+        /// метод для получения случайного списка покупок
+        /// </summary>
+        /// <returns>список покупок</returns>
         private async Task<List<OrderItem>> GenerateRandomOrder()
         {
             List<OrderItem> orderItems = new List<OrderItem>();
@@ -50,11 +77,15 @@ namespace FirstProject.Models.BussinesLogic
             }
             return orderItems;
         }
-
+        /// <summary>
+        /// метод который выполняется по истечению таймера
+        /// </summary>
+        /// <param name="source">?</param>
+        /// <param name="e">?</param>
         private async void OnTimedEvent(object source, ElapsedEventArgs e)
         {
-            var buyer = DataModulService.GetRandomBuyer();
-            var seller = DataModulService.GetRandomSeller();
+            var buyer =await DataModulService.GetRandomBuyer();
+            var seller =await DataModulService.GetRandomSeller();
             var orderDetails = await GenerateRandomOrder();
             var order =await ClientService.CreateOrders(buyer.Id, seller.Id, orderDetails);
             Console.WriteLine("/DDD/");
@@ -69,13 +100,18 @@ namespace FirstProject.Models.BussinesLogic
                 await Console.Out.WriteLineAsync("Try Again");
             }
         }
-
+        /// <summary>
+        /// метод для остановки таймера
+        /// </summary>
         public void StopTimer()
         {
             // Остановка таймера
             _timer.Stop();
             _timer.Dispose();
         }
+        /// <summary>
+        /// событие срабатывающее при успешном заказа
+        /// </summary>
         public event EventHandler<Order> OnBuy;
 
 

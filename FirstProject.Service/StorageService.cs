@@ -10,16 +10,29 @@ using FirstProject.Interfaces;
 
 namespace FirstProject.Service
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class StorageService : IStorageService
     {
+        /// <summary>
+        /// 
+        /// </summary>
         private DbContextOptions<DataContext> _dbContextOptions;
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dbContextOptions"></param>
         public StorageService(DbContextOptions<DataContext> dbContextOptions)
         {
             _dbContextOptions = dbContextOptions;
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="shop"></param>
+        /// <returns></returns>
 
         public async Task CreateShop(Shop shop)
         {
@@ -33,12 +46,22 @@ namespace FirstProject.Service
 
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<Shop>> GetShops()
         {
             await using var db = new DataContext(_dbContextOptions);
             var shops = await db.Shops.ToListAsync();
             return shops;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="shopId"></param>
+        /// <param name="seller"></param>
+        /// <returns></returns>
         public async Task AddSeller(int shopId, Seller seller)
         {
             if (seller == null)
@@ -57,12 +80,22 @@ namespace FirstProject.Service
             return;
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="shopId"></param>
+        /// <returns></returns>
         public async Task<List<Seller>> GetSellers(int shopId)
         {
             await using var db = new DataContext(_dbContextOptions);
             var sellers = await db.Sellers.Where(x => x.ShopId == shopId).ToListAsync();
             return sellers;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
         public async Task CreateProduct(Product product)
         {
             await using var db = new DataContext(_dbContextOptions);
@@ -77,6 +110,10 @@ namespace FirstProject.Service
             return;
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<Product>> GetProduct()
         {
             await using var db = new DataContext(_dbContextOptions);
@@ -122,6 +159,14 @@ namespace FirstProject.Service
                 await db.StorageTransactions.AddAsync(new StorageTransaction { ShopId = shopId, ProductId = item.ProductId, Count = item.Count, TransactionType = StorageTransactionType.Ship });
             }
             await db.SaveChangesAsync();
+        }
+
+        public async Task AddBuyer(List<Buyer> buyers)
+        {
+            await using var db = new DataContext(_dbContextOptions);
+            await db.AddRangeAsync(buyers);
+            await db.SaveChangesAsync();
+
         }
     }
 }

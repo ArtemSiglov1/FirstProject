@@ -12,19 +12,36 @@ using System.Threading.Tasks;
 
 namespace FirstProject.Service
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ClientService:IClientService
     {
+        /// <summary>
+        /// 
+        /// </summary>
         private DbContextOptions<DataContext> _dbContextOptions;
+       
 
-        public ClientService()
-        {
-        }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dbContextOptions"></param>
         public ClientService(DbContextOptions<DataContext> dbContextOptions)
         {
             _dbContextOptions = dbContextOptions;
         }
+        /// <summary>
+        /// 
+        /// </summary>
        public List<Product> Products { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="buyerId"></param>
+        /// <param name="sellerId"></param>
+        /// <param name="items"></param>
+        /// <returns></returns>
         public async Task<Order> CreateOrders(int buyerId,int sellerId,List<OrderItem> items)
         {
             await using var db = new DataContext(_dbContextOptions);
@@ -38,7 +55,7 @@ namespace FirstProject.Service
             {
                 Console.WriteLine(new BaseResponse() { IsSuccess = true, ErrorMessage = "продовец с данным айди не найден" }) ;return null;
             }
-            var order = new Order { BuyerId = buyerId, SellerId = sellerId, Items = items };
+            var order = new Order { BuyerId = buyerId, SellerId = sellerId, Items = items ,DateCreate=DateTime.UtcNow};
             await db.Orders.AddAsync(order);
             await db.SaveChangesAsync();
             return order;

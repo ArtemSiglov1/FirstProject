@@ -15,19 +15,31 @@ using System.Threading.Tasks;
 
 namespace FirstProject.Service
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class SellerService:ISellerService
     {
+        /// <summary>
+        /// 
+        /// </summary>
         private DbContextOptions<DataContext> _dbContextOptions;
-
-        public SellerService()
-        {
-        }
+       
+       /// <summary>
+       /// 
+       /// </summary>
+       /// <param name="dbContextOptions"></param>
 
         public SellerService(DbContextOptions<DataContext> dbContextOptions)
         {
             _dbContextOptions = dbContextOptions;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="order"></param>
+        /// <param name="shopId"></param>
+        /// <returns></returns>
         public async Task<List<OrderItem>> CheckProduct(Order order, int shopId)
         {
             await using var db = new DataContext(_dbContextOptions);
@@ -55,7 +67,13 @@ namespace FirstProject.Service
             }
             return new List<OrderItem> { };
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="order"></param>
+        /// <param name="shopId"></param>
+        /// <param name="sellerId"></param>
+        /// <returns></returns>
         public async Task<bool> ProcessOrder(Order order, int shopId, int sellerId)
         {
 
