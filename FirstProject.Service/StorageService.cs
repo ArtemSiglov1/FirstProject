@@ -177,5 +177,13 @@ namespace FirstProject.Service
             await db.SaveChangesAsync();
 
         }
+
+        public async Task AddBuyer(List<Buyer> buyers)
+        {
+            await using var db = new DataContext(_dbContextOptions);
+            await db.AddRangeAsync(buyers);
+            await db.SaveChangesAsync();
+
+        }
     }
 }
