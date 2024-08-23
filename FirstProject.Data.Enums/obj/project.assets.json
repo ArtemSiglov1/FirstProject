@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\siglov\\source\\repos\\FirstProject\\FirstProject.Data.Enums\\FirstProject.Data.Enums.csproj",
-      "projectName": "FirstProject.Data.Enums",
-      "projectPath": "C:\\Users\\siglov\\source\\repos\\FirstProject\\FirstProject.Data.Enums\\FirstProject.Data.Enums.csproj",
+      "projectUniqueName": "C:\\Users\\siglov\\source\\repos\\FirstProject\\FirstProject.Data.Enums\\OnlineShop.Data.Enums.csproj",
+      "projectName": "OnlineShop.Data.Enums",
+      "projectPath": "C:\\Users\\siglov\\source\\repos\\FirstProject\\FirstProject.Data.Enums\\OnlineShop.Data.Enums.csproj",
       "packagesPath": "C:\\Users\\siglov\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\siglov\\source\\repos\\FirstProject\\FirstProject.Data.Enums\\obj\\",
       "projectStyle": "PackageReference",

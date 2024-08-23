@@ -10,7 +10,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Runtime.CompilerServices;
 
-///
 internal class Program
 {
     private static async Task Main(string[] args)
@@ -42,19 +41,13 @@ internal class Program
         ///
         Manager manager = new Manager(storageService, clientService, dataService, sellerService);
 
-        ///
-        await manager.DataService.DelleteAll();
-        ///
-        await manager.DataService.InitData(storageService);
-        ///
-        manager.InitClient(1);
-        await manager.InitMagazin();
 
-        ///
-        //shops = manager.InitShop();
-        manager.Start();
-        ///
-     
+        Manager manager = new Manager(storageService, clientService, dataService, sellerService);
+
+        //manager.InitClient(5); 
+        ////shops = manager.InitShop(); 
+        //manager.Start();
+       await manager.DataService.InitData(sellerService,clientService,storageService);
         Console.ReadKey();
     }
 }

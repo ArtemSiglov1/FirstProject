@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FirstProject.Data.Enums
+namespace OnlineShop.Data.Enums
 {
     /// <summary>
     /// тип транзакции

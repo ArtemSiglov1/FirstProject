@@ -18,11 +18,6 @@ namespace FirstProject.BussinesLogic
         /// идентиф
         /// </summary>
         public int Id { get; set; }
-        public IDataModulService Data { get; set; }
-        public ISellerService Seller { get; set; }
-        /// <summary>
-        /// лист бизнес моделей продавцов
-        /// </summary>
         public List<BusinessSeller> Sellers { get; set; }
         /// <summary>
         /// конструктор 
@@ -56,13 +51,6 @@ namespace FirstProject.BussinesLogic
                 DeliverRequest?.Invoke(this, order);
             }
         }
-
-       
-
-        public event EventHandler<Order> DeliverRequest;
-        /// <summary>
-        /// меняет кол во пришедших заказов
-        /// </summary>
        public  event EventHandler<int> OnPassedOrders;
         /// <summary>
         /// меняет число выполненых заказов
